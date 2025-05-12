@@ -1,0 +1,122 @@
+// vim: fdm=marker
+
+configuration {
+  modes: "window,drun,run,ssh";
+  font: "JetBrainsMono Nerd Font 12";
+  drun-display-format: "{name}";
+}
+
+* {
+  // General Colors
+  background: #2E3440;      // Dark background
+  foreground: #ECEFF4;      // Light foreground text color
+  selected: #5E81AC;        // Highlight color for selected items
+  border-color: #4C566A;    // Subtle border color
+  border-radius: 6px;       // Rounded corners
+  padding: 6px 12px;        // Padding for better readability
+  spacing: 4px;             // Spacing between elements
+}
+
+window {
+  width: 300px;             // Window width
+  border: 2px;              // Border width
+  border-radius: 10px;      // Rounded corners for the window
+  background-color: @background;
+}
+
+mainbox {
+  children: [inputbar, listview];
+  padding: 10px;            // Padding for the main box
+}
+
+inputbar {
+  border: 0;
+  padding: 6px;
+  background-color: @background;
+  text-color: @foreground;
+  spacing: 5px;
+}
+
+prompt {
+  padding: 0 8px;
+  text-color: @selected;
+}
+
+entry {
+  padding: 6px;
+  text-color: @foreground;
+  background-color: transparent;
+  placeholder-color: #888; // Placeholder color for input
+}
+
+listview {
+  lines: 6;                 // Number of lines to show in the list
+  scrollbar: true;           // Enable the scrollbar
+  fixed-height: true;        // Keep list view height fixed
+  background-color: @background;
+  spacing: 6px;
+  border: 0;
+  padding: 4px;
+
+  scrollbar-width: 6px;      // Width of the scrollbar
+  scrollbar-color: @selected; // Color of the scrollbar handle
+}
+
+element {
+  padding: 6px;
+  border-radius: 5px;       // Rounded corners for list elements
+  background-color: transparent;
+  text-color: @foreground;
+}
+
+element.selected {
+  background-color: @selected;  // Background color for selected items
+  text-color: #fff;              // Text color for selected items
+}
+
+element.normal {
+  background-color: transparent;
+  text-color: @foreground;       // Default text color for normal items
+}
+
+element.urgent {
+  background-color: #fb4934;     // Red color for urgent items
+  text-color: #fff;
+}
+
+element.active {
+  background-color: #a9b665;     // Green color for active items
+  text-color: #fff;
+}
+
+sidebar {
+  border: 2px 0 0;
+  border-color: @foreground;
+}
+
+inputbar {
+  spacing: 0;
+  text-color: @foreground;
+  padding: 2px;
+  children: [prompt, textbox-prompt-sep, entry, case-indicator];
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+  spacing: 0;
+  text-color: @foreground;
+}
+
+button.selected {
+  background-color: @background;
+  text-color: @foreground;
+}
+
+textbox-prompt-sep {
+  expand: false;
+  str: ":";
+  text-color: @foreground;
+  margin: 0 0.3em 0 0;
+}
